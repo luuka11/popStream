@@ -1,0 +1,148 @@
+/* base */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #050000;
+    font-family: sans-serif;
+}
+/* header */
+
+header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.logo {
+    color: #cccccc;
+    font-size: 28px ;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.logo span {
+    color: #f70b17;
+}
+/* seção de busca */
+.secao-busca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 30px;
+}
+.busca-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+.barra-busca {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 500px;
+    gap: 10px;
+}
+#inputBusca {
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 15px;
+    flex: 1;
+}
+#inputBusca::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+#btnBuscar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* seção de cards */
+
+.secao-cards {
+    padding: 20px 40px;
+}
+.secao-titulo {
+    color: #f0f0f0;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+/* card individual */
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: scale(1.03);
+}
+.card img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+.card-info {
+    padding: 10px;
+}
+.card-titulo {
+    color: #f0f0f0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.card-nota {
+    color: #f70b17;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* footer */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 8px;
+}
+.logo-footer {
+    font-size: 20px;
+    font-weight: bold;
+    color: #cccccc;
+    letter-spacing: 2px;
+}
+.logo-footer span {
+    color: #f70b17;
+}
+
+h2 {
+    color: #f0f0f0;
+    text-align: center;
+}
+p {
+    color: #f0f0f0;
+    height: auto;
+    text-align: center;
+}

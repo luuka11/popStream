@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>popStream</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <span class="logo">pop<span>Stream</span></span>
+  </header>
+
+
+  <hr>
+
+  <!-- BUSCA -->
+  <section class="secao-busca">
+    <p class="busca-label">Busque filmes, séries ou atores</p>
+    <div class="barra-busca">
+      <input type="text" id="inputBusca" placeholder="Ex: Vingadores, Tom Hanks, Ação..." />
+      <button id="btnBuscar">🔍</button>
+    </div>
+  </section>
+
+  <!-- POPULARES -->
+  <section class="secao-cards">
+    <h2 class="secao-titulo">🔥 Populares agora</h2>
+    <div class="grid-cards" id="listaFilmes">
+      <!-- Cards gerados pelo JavaScript -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="logo-footer">pop<span>TV</span></span>
+    <p>Todos os direitos reservados</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
