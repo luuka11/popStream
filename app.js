@@ -1,15 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const buscarPopulares = async () => {
-        
         const resposta = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=d2be3c3ca677490a327420b8916ea672&language=pt-BR')
         const dados = await resposta.json()
-        
-        console.log(dados)
-        
+
+        const lista = document.getElementById('listaFilmes');
+
         for (const filme of dados.results) {
             const card = document.createElement('div');
+            card.classList.add('card');
+
+            card.innerHTML = `
+                <img src="https://image.tmdb.org/t/p/w500${filme.poster_path}" alt="${filme.title}">
+                <div class="card-info">
+                    <h3 class="card-titulo">${filme.title}</h3>
+                    <p class="card-nota">⭐ ${filme.vote_average.toFixed(1)}</p>
+                </div>
+            `;
+
+            lista.appendChild(card);
         }
     }
-    buscarPopulares()
-});
 
+    document.getElementById('btnBuscar').addEventListener('click', async () => {
+        const termo = document.getElementById('inputBusca').value.trim();
+
+        if (!termo) return;
+
+        const resposta = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=d2be3c3ca677490a327420b8916ea672&language=pt-BR&query=${termo}`);
+        const dados = await resposta.json();
+
+        const lista = document.getElementById('listaFilmes');
+        lista.innerHTML = '';
+
+        for (const filme of dados.results) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            card.innerHTML = `
+               <img src="${filme.poster_path ? `https://image.tmdb.org/t/p/w500${filme.poster_path}` : 'assets/sem-poster.png'}" alt="${filme.title}">
+                <div class="card-info">
+                    <h3 class="card-titulo">${filme.title}</h3>
+                    <p class="card-nota">⭐ ${filme.vote_average.toFixed(1)}</p>
+                </div>
+            `;
+
+            lista.appendChild(card);
+        }
+    });
+
+    buscarPopulares();
+
+    document.getElementById('inputBusca').addEventListener('keydown', (evento) => {
+    if (evento.key === 'Enter') {
+        document.getElementById('btnBuscar').click();
+    }
+});
+});
