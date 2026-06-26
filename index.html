@@ -16,7 +16,7 @@
 
   <hr>
 
-  <!-- BUSCA -->
+  <!-- SEÇÃO DE BUSCA DO SITE -->
   <section class="secao-busca">
     <p class="busca-label">Busque filmes, séries ou atores</p>
     <div class="barra-busca">
@@ -25,7 +25,7 @@
     </div>
   </section>
 
-  <!-- POPULARES -->
+  <!-- AQUI É FEITO OS CARDS DE POPULARES -->
   <section class="secao-cards">
     <h2 class="secao-titulo">🔥 Populares agora</h2>
     <div class="grid-cards" id="listaFilmes">
@@ -38,6 +38,15 @@
     <span class="logo-footer">pop<span>TV</span></span>
     <p>Todos os direitos reservados</p>
   </footer>
+
+  <!-- AQUI IRA SER USADO PARA FAZER UM MODAL PARA SINOPSE DOS FILMES -->
+  <div id="modal" class="modal-overlay">
+  <div class="modal-conteudo">
+    <button id="fecharModal">✕</button>
+    <h2 id="modalTitulo"></h2>
+    <p id="modalSinopse"></p>
+  </div>
+</div>
 
   <script src="app.js"></script>
 </body>

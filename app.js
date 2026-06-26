@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             lista.appendChild(card);
+        
+            card.addEventListener('click', () => {
+                document.getElementById('modalTitulo').textContent = filme.title;
+                document.getElementById('modalSinopse').textContent = filme.overview || 'Sinopse não dísponível'
+                document.getElementById('modal').classList.add('ativo');
+
+            });
         }
     }
 
@@ -46,8 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             lista.appendChild(card);
+
+            card.addEventListener('click', () => {
+                document.getElementById('modalTitulo').textContent = filme.title;
+                document.getElementById('modalSinopse').textContent = filme.overview || 'Sinopse não dísponível'
+                document.getElementById('modal').classList.add('ativo');
+
+            });
         }
     });
+
+    document.getElementById('fecharModal').addEventListener('click', () => {
+    document.getElementById('modal').classList.remove('ativo');
+});
+
+document.getElementById('modal').addEventListener('click', (evento) => {
+    if (evento.target === document.getElementById('modal')) {
+        document.getElementById('modal').classList.remove('ativo');
+    }
+});
 
     buscarPopulares();
 
