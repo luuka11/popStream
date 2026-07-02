@@ -1,0 +1,8 @@
+# segredos reais (backend, tokens, etc)
+.env
+.env.local
+config.local.js
+
+# sistemas
+node_modules/
+.DS_Store

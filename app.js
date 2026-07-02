@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const buscarPopulares = async () => {
-        const resposta = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=0d1bb834bd20684dfdf4e3fb16c15123&language=pt-BR')
+        const resposta = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=a9cbfa5a5f46f824c99484494142a2ac&language=pt-BR')
         const dados = await resposta.json()
 
         const lista = document.getElementById('listaFilmes');
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!termo) return;
 
-        const resposta = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=0d1bb834bd20684dfdf4e3fb16c15123&language=pt-BR&query=${termo}`);
+        const resposta = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=a9cbfa5a5f46f824c99484494142a2ac&language=pt-BR&query=${termo}`);
         const dados = await resposta.json();
 
         const lista = document.getElementById('listaFilmes');
