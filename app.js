@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    let generos = [];
+
     const criarCard = (filme) => {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -21,9 +23,30 @@ document.addEventListener("DOMContentLoaded", () => {
         return card;
     };
 
+    const preencherFiltroGenero = () => {
+        const select = document.getElementById('filtroGenero');
+
+        for (const genero of generos) {
+            const option = document.createElement('option');
+            option.value = genero.id;
+            option.textContent = genero.name;
+            select.appendChild(option);
+        }
+    };
+
+    const buscarGeneros = async () => {
+        const resposta = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=pt-BR`);
+        const dados = await resposta.json();
+
+        generos = dados.genres;
+
+        // só preenche o select depois que os gêneros já chegaram
+        preencherFiltroGenero();
+    };
+
     const buscarPopulares = async () => {
-        const resposta = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=a9cbfa5a5f46f824c99484494142a2ac&language=pt-BR')
-        const dados = await resposta.json()
+        const resposta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR`);
+        const dados = await resposta.json();
 
         const lista = document.getElementById('listaFilmes');
 
@@ -31,14 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = criarCard(filme);
             lista.appendChild(card);
         }
-    }
+    };
 
     document.getElementById('btnBuscar').addEventListener('click', async () => {
         const termo = document.getElementById('inputBusca').value.trim();
 
         if (!termo) return;
 
-        const resposta = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=a9cbfa5a5f46f824c99484494142a2ac&language=pt-BR&query=${termo}`);
+        const resposta = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=pt-BR&query=${termo}`);
         const dados = await resposta.json();
 
         const lista = document.getElementById('listaFilmes');
@@ -61,10 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     buscarPopulares();
+    buscarGeneros();
 
     document.getElementById('inputBusca').addEventListener('keydown', (evento) => {
         if (evento.key === 'Enter') {
             document.getElementById('btnBuscar').click();
         }
     });
+
+    // PRÓXIMO PASSO: listener no #filtroGenero pra buscar filmes
+    // usando o endpoint discover/movie com with_genres
+
 });
