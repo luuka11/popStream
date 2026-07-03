@@ -91,7 +91,21 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('btnBuscar').click();
         }
     });
+    document.getElementById('filtroGenero').addEventListener('change', async () => {
 
+        const generoId = document.getElementById('filtroGenero').value
+
+        const resposta = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=pt-BR&with_genres=${generoId}`);
+        const dados = await resposta.json();
+
+        const lista = document.getElementById('listaFilmes');
+        lista.innerHTML = '';
+
+        for (const filme of dados.results) {
+            const card = criarCard(filme);
+            lista.appendChild(card);
+}
+    })
     // PRÓXIMO PASSO: listener no #filtroGenero pra buscar filmes
     // usando o endpoint discover/movie com with_genres
 
